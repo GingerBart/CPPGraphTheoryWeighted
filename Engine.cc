@@ -31,8 +31,8 @@ void Engine::printIntro()
 void Engine::printStartMenu()
 {
 	std::cout << "What type of graph would you like to use?" << std::endl;
-	std::cout << "1. Petersen Graph with unit weight edges" << std::endl;
-	std::cout << "2. Complete Graph with unit weight edges" << std::endl;
+	std::cout << "1. Petersen Graph" << std::endl;
+	std::cout << "2. Complete Graph" << std::endl;
 	std::cout << "3. Quit program" << std::endl;
 	std::cout << "Please enter your choice: ";
 }
@@ -45,12 +45,12 @@ void Engine::startMenuChoices(int choice)
 	std::string watch;
 	if (choice == 1)
 	{
+		std::cout << "What weight would you like to assign the edges?: ";
+//		std::cout << "\tNode: Type 0 for random." << std::endl;
+//		std::cout << "What weight? ";
+		std::cin >> edgeWeight;
 		std::cout << "How many games would you like to play?: ";
 		std::cin >> numGamesToPlay;
-		std::cout << "What wight would you like to assign the edges?" << std::endl;
-//		std::cout << "\tNode: Type 0 for random." << std::endl;
-		std::cout << "What weight? ";
-		std::cin >> edgeWeight;
 		std::cout << "Would you like to view the games as they are being played?" << std::endl;
 		std::cout << "\tNote: If running more than 10 million games, 'n' recommended." << std::endl;
 		std::cout << "Watch games? (y/n): ";
@@ -62,12 +62,12 @@ void Engine::startMenuChoices(int choice)
 	{
 		std::cout << "How many nodes would you like in this graph?: ";
 		std::cin >> numNodes;
+		std::cout << "What weight would you like to assign the edges?: ";
+//		std::cout << "\tNode: Type 0 for random." << std::endl;
+//		std::cout << "What weight? ";
+		std::cin >> edgeWeight;
 		std::cout << "How many games would you like to play?: ";
 		std::cin >> numGamesToPlay;
-		std::cout << "What wight would you like to assign the edges?" << std::endl;
-//		std::cout << "\tNode: Type 0 for random." << std::endl;
-		std::cout << "What weight? ";
-		std::cin >> edgeWeight;
 		std::cout << "Would you like to view the games being played?" << std::endl;
 		std::cout << "\tNote: If running over 150-200 nodes, and/or over 10 million games, 'n' recommended." << std::endl;
 		std::cout << "Watch games? (y/n): ";
@@ -278,8 +278,8 @@ void Engine::dataAnalysis(int choice)
 		}
 		results << std::endl;
 	}
-	std::cout << "\nThe longest game was " << (longestGame + 1) / 2 << " moves.\n" << std::endl;
-	results << "The longest game was " << (longestGame + 1) / 2 << " moves.\n" << std::endl;
+	std::cout << "\nThe longest game was " << (longestGame / 4) << " moves.\n" << std::endl;
+	results << "The longest game was " << (longestGame / 4) << " moves.\n" << std::endl;
 	results.close();
 }
 
