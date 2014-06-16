@@ -24,10 +24,11 @@
 /*	Constructor for the CompleteGraph. Takes three ints: i, numNodes, weight,
  *	and a bool b and assigns initial values.
  */
-CompleteGraph::CompleteGraph(int i, int numNodes, int weight, bool b)
+CompleteGraph::CompleteGraph(int i, int numNodes, int weight, bool b, int k)
 {
 	edgeWeight = weight;
 	gameNumber = i;
+	totalGames = k;
 	watch = b;
 	nodeNameCount = 0;
 	for (int j = 1; j <= numNodes ; j++)
@@ -144,11 +145,11 @@ void CompleteGraph::rotateBar()
 	whichOne = barCount % 4;
 	if (whichOne == 3)
 	{
-		std::cout << '\r' << barspin[whichOne] << "  Please wait while the games are played. Game: " << gameNumber;
+		std::cout << '\r' << barspin[whichOne] << "  Please wait while the games are played. Game: " << gameNumber << " " << (int)(((double)gameNumber/totalGames)*100.0) << "% complete";
 	}
 	else
 	{
-		std::cout << '\r' << barspin[whichOne] << "  Please wait while the games are played. Game: " << gameNumber;
+		std::cout << '\r' << barspin[whichOne] << "  Please wait while the games are played. Game: " << gameNumber << " " << (int)(((double)gameNumber/totalGames)*100.0) << "% complete";
 	}
 	std::cout.flush();
 	return;

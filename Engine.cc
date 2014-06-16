@@ -385,18 +385,20 @@ void Engine::rotateBarAnalyzeP2()
 void Engine::createPetersenGraph(int choice, int edgeWeight, std::string watch)
 {
 	std::clock_t startTime = clock();
+	std::cout << "Number of games to play: " << choice << std::endl;
 	if (watch == "y" || watch == "Y")
 		for (int i = 1; i <= choice; i++)
 		{
-			PetersenGraph *a = new PetersenGraph(i, edgeWeight, true);
+			PetersenGraph *a = new PetersenGraph(i, edgeWeight, true, choice);
 			delete a;
 		}
 	else if (watch == "n" || watch == "N")
 		for (int i = 1 ; i <= choice; i++)
 		{
-			PetersenGraph *a = new PetersenGraph(i, edgeWeight, false);
+			PetersenGraph *a = new PetersenGraph(i, edgeWeight, false, choice);
 			delete a;
 		}
+	std::cout << "\n\n-----------------------------------------------\n" << std::endl;
 	parseMasterData();
 	dataAnalysis(choice);
 	//Surface *a = new Surface(choice);
@@ -431,19 +433,19 @@ void Engine::createCompleteGraph(int numGames, int numNodes, int edgeWeight, std
 {
 	//int numberOfNodes = numNodes;
 	std::clock_t startTime = clock();
+	std::cout << "Number of games to play: " << numGames << std::endl;
 	if (watch == "y" || watch == "Y")
 		for (int i = 1; i <= numGames; i++)
 		{
-			CompleteGraph *a = new CompleteGraph(i, numNodes, edgeWeight, true);
+			CompleteGraph *a = new CompleteGraph(i, numNodes, edgeWeight, true, numGames);
 			delete a;
 		}
 	else if (watch == "n" || watch == "N")
 		for (int i = 1 ; i <= numGames; i++)
 		{
-			CompleteGraph *a = new CompleteGraph(i, numNodes, edgeWeight, false);
+			CompleteGraph *a = new CompleteGraph(i, numNodes, edgeWeight, false, numGames);
 			delete a;
 		}
-	std::cout << std::endl;
 	std::cout << "\n\n-----------------------------------------------\n" << std::endl;
 	parseMasterData();
 	parsePlayerLogicalData();

@@ -23,15 +23,16 @@
 //Desc: Constructor for the PetersenGraph object. Constructs a PetersenGraph of Nodes,
 //		and creates edges between them.
 //Input: int i for the number of Nodes
-PetersenGraph::PetersenGraph(int i, int j, bool b)
+PetersenGraph::PetersenGraph(int i, int j, bool b, int k)
 {
 	gameNumber = i;
 	edgeWeight = j;
+	totalGames = k;
 	watch = b;
 	nodeNameCount = 0;
-	for (int k = 1; k <= 10; k++)
+	for (int l = 1; l <= 10; l++)
 	{
-		createInitialNodes(k);
+		createInitialNodes(l);
 		nodeNameCount++;
 	}
 	createInitialEdges();
@@ -209,11 +210,12 @@ void PetersenGraph::rotateBar()
 	whichOne = barCount % 4;
 	if (whichOne == 3)
 	{
-		std::cout << '\r' << barspin[whichOne] << "  Please wait while the games are played. Game: " << gameNumber;
+		std::cout << '\r' << barspin[whichOne] << "  Please wait while the games are played. Game: " << gameNumber << " " << (int)(((double)gameNumber/totalGames)*100.0) << "% complete";
+
 	}
 	else
 	{
-		std::cout << '\r' << barspin[whichOne] << "  Please wait while the games are played. Game: " << gameNumber;
+		std::cout << '\r' << barspin[whichOne] << "  Please wait while the games are played. Game: " << gameNumber << " " << (int)(((double)gameNumber/totalGames)*100.0) << "% complete";
 	}
 	std::cout.flush();
 	return;

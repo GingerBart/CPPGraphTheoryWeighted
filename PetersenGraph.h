@@ -10,7 +10,7 @@ class Node;
 
 class PetersenGraph {
 public:
-	PetersenGraph(int, int, bool);
+	PetersenGraph(int, int, bool, int);
 	virtual ~PetersenGraph();
 	void createInitialEdges();
 	void createInitialNodes(int);
@@ -28,6 +28,7 @@ public:
 private:
 	int nodeNameCount; //Keeps track of what the name of the next Node will be
 	int edgeWeight;
+	int totalGames;
 	bool watch;
 	void rotateBar();
 	int barCount;

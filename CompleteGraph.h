@@ -9,7 +9,7 @@ class Node;
 
 class CompleteGraph {
 public:
-	CompleteGraph(int, int, int, bool);
+	CompleteGraph(int, int, int, bool, int);
 	virtual ~CompleteGraph();
 	void createInitialEdges();
 	void createInitialNodes(int);
@@ -27,6 +27,7 @@ public:
 private:
 	int nodeNameCount; //Keeps track of what the name of the next Node will be
 	int edgeWeight;
+	int totalGames;
 	void rotateBar();
 	bool watch;
 	int barCount;
