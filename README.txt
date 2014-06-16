@@ -14,7 +14,7 @@ To run this game (assuming using OS X):
 Double-click "Start.command"
 
 In “output_data”, the following files will be created after the program has run:
-“master_data.txt”, “player1_moves.txt”, “player2_moves.txt”,"player1_unique_moves, "player2_unique_moves", and “results.txt”.
+“master_data.txt”, “player1_moves.txt”, “player2_moves.txt”, "player1_unique_moves, "player2_unique_moves", and “results.txt”.
 
 “master_data.txt” - This is the raw, unsorted, unparsed data at outputted by the program. The last number at the end of the string is the winner of this game. It is 
 written in the following format: 1-1-2-1–3-1-4, and can be read as: “Starting node” - “Weight removed” - “Ending node”: where move 1 is from 1 to 2 removing weight 1, move 2 is from 2 - 3 removing weight 1, etc.
