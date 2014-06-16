@@ -10,6 +10,13 @@
 
 #include <vector>
 
+const std::string master_data_path = "output_data/master_data.txt";
+const std::string player1_data_path = "output_data/player1_moves.txt";
+const std::string player2_data_path = "output_data/player2_moves.txt";
+const std::string player1_logical_data_path = "output_data/player1_logical_moves.txt";
+const std::string player2_logical_data_path = "output_data/player2_logical_moves.txt";
+const std::string results_data_path = "output_data/results.txt";
+
 Engine::Engine()
 {
 	int choice = 0;
@@ -45,6 +52,7 @@ void Engine::startMenuChoices(int choice)
 	std::string watch;
 	if (choice == 1)
 	{
+		std::cout << "\nPetersen Graph" << std::endl;
 		std::cout << "What weight would you like to assign the edges?: ";
 //		std::cout << "\tNode: Type 0 for random." << std::endl;
 //		std::cout << "What weight? ";
@@ -60,6 +68,7 @@ void Engine::startMenuChoices(int choice)
 	}
 	else if (choice == 2)
 	{
+		std::cout << "\nComplete Graph" << std::endl;
 		std::cout << "How many nodes would you like in this graph?: ";
 		std::cin >> numNodes;
 		std::cout << "What weight would you like to assign the edges?: ";
@@ -85,9 +94,6 @@ void Engine::parseMasterData()
 	std::ifstream master;
 	std::ofstream p1;
 	std::ofstream p2;
-	std::string master_data_path = "output_data/master_data.txt";
-	std::string player1_data_path = "output_data/player1_moves.txt";
-	std::string player2_data_path = "output_data/player2_moves.txt";
 	master.open(master_data_path);
 	p1.open(player1_data_path, std::ios_base::app);
 	p2.open(player2_data_path, std::ios_base::app);
@@ -132,10 +138,6 @@ void Engine::parsePlayerLogicalData()
 	std::ifstream p2;
 	std::ofstream p1logical;
 	std::ofstream p2logical;
-	std::string player1_data_path = "output_data/player1_moves.txt";
-	std::string player2_data_path = "output_data/player2_moves.txt";
-	std::string player1_logical_data_path = "output_data/player1_logical_moves.txt";
-	std::string player2_logical_data_path = "output_data/player2_logical_moves.txt";
 	p1.open(player1_data_path);
 	p2.open(player2_data_path);
 	p1logical.open(player1_logical_data_path, std::ios_base::app);
@@ -167,11 +169,6 @@ void Engine::dataAnalysis(int choice)
 	std::ifstream p1;
 	std::ifstream p2;
 	std::ofstream results;
-	std::string player1_data_path = "output_data/player1_moves.txt";
-	std::string player2_data_path = "output_data/player2_moves.txt";
-	std::string results_data_path = "output_data/results.txt";
-	std::string player1_logical_data_path = "output_data/player1_logical_moves.txt";
-	std::string player2_logical_data_path = "output_data/player2_logical_moves.txt";
 	p1.open(player1_data_path);
 	p2.open(player2_data_path);
 //	p1_logical.open(player1_logical_data_path);
@@ -435,6 +432,7 @@ void Engine::createCompleteGraph(int numGames, int numNodes, int edgeWeight, std
 			CompleteGraph *a = new CompleteGraph(i, numNodes, edgeWeight, false);
 			delete a;
 		}
+	std::cout << std::endl;
 	std::cout << "\n\n-----------------------------------------------\n" << std::endl;
 	parseMasterData();
 	parsePlayerLogicalData();

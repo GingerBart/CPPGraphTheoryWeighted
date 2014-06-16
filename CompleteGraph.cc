@@ -1,9 +1,13 @@
+/*	Author: Kyle Rodgers
+ *	Date: 6/12/2014
+ */
+
 #include <list>
 #include <string>
 #include <iostream>
 #include <algorithm>
 #include <iterator>
-#include <fstream>						//for saving information to text files
+#include <fstream>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,13 +19,11 @@
 #include "CompleteGraph.h"
 #include "RandomEngine.h"
 
-/*
- This is the .cpp file for the CompleteGraph object.
- */
+//	This is the .cc file for the CompleteGraph object.
 
-//Desc: Constructor for the CompleteGraph object. Constructs a CompleteGraph of Nodes,
-//		and creates edges between them.
-//Input: int i for the number of Nodes
+/*	Constructor for the CompleteGraph. Takes three ints: i, numNodes, weight,
+ *	and a bool b and assigns initial values.
+ */
 CompleteGraph::CompleteGraph(int i, int numNodes, int weight, bool b)
 {
 	edgeWeight = weight;
@@ -34,18 +36,10 @@ CompleteGraph::CompleteGraph(int i, int numNodes, int weight, bool b)
 		nodeNameCount++;
 	}
 	createInitialEdges();
-	//for (std::list<Node*>::iterator iter = nodeList.begin(); iter != nodeList.end(); i++)
-	//{
-	//	(*iter)->printEdges();
-	//}
-//	std::ofstream master_data;
 	game();
 }
-//analysis(numGames);
 
-
-//Desc: Destructor for the CompleteGraph object. Deletes the nodeList
-//		and frees up memory.
+//	Destructor for the CompleteGraph object
 CompleteGraph::~CompleteGraph()
 {
 	while(!nodeList.empty()) {
@@ -57,7 +51,7 @@ CompleteGraph::~CompleteGraph()
 	//player2.clear();
 }
 
-//Desc: Creates the initial edges
+//	Creates the initial edges
 void CompleteGraph::createInitialEdges()
 {
 	for (std::list<Node*>::iterator iter1 = nodeList.begin(); iter1 != nodeList.end(); iter1++)
