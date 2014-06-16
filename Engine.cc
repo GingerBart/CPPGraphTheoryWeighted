@@ -16,6 +16,8 @@ const std::string player2_data_path = "output_data/player2_moves.txt";
 const std::string player1_logical_data_path = "output_data/player1_logical_moves.txt";
 const std::string player2_logical_data_path = "output_data/player2_logical_moves.txt";
 const std::string results_data_path = "output_data/results.txt";
+const std::string player1_unique_moves = "output_data/player1_unique_moves.txt";
+const std::string player2_unique_moves = "output_data/player2_unique_moves.txt";
 
 Engine::Engine()
 {
@@ -60,7 +62,7 @@ void Engine::startMenuChoices(int choice)
 		std::cout << "How many games would you like to play?: ";
 		std::cin >> numGamesToPlay;
 		std::cout << "Would you like to view the games as they are being played?" << std::endl;
-		std::cout << "\tNote: If running more than 10 million games, 'n' recommended." << std::endl;
+		std::cout << "\tNote: If running more than 10 million games, or \n\tif you want a cleaner terminal, 'n' recommended." << std::endl;
 		std::cout << "Watch games? (y/n): ";
 		std::cin >> watch;
 		std::cout << std::endl;
@@ -78,7 +80,7 @@ void Engine::startMenuChoices(int choice)
 		std::cout << "How many games would you like to play?: ";
 		std::cin >> numGamesToPlay;
 		std::cout << "Would you like to view the games being played?" << std::endl;
-		std::cout << "\tNote: If running over 150-200 nodes, and/or over 10 million games, 'n' recommended." << std::endl;
+		std::cout << "\tNote: If running over 150-200 nodes, and/or over 10 million games, or \n\tif you want a cleaner terminal, 'n' recommended." << std::endl;
 		std::cout << "Watch games? (y/n): ";
 		std::cin >> watch;
 		std::cout << std::endl;
@@ -171,7 +173,7 @@ void Engine::dataAnalysis(int choice)
 	std::ofstream results;
 	p1.open(player1_data_path);
 	p2.open(player2_data_path);
-//	p1_logical.open(player1_logical_data_path);
+//	p1_logical.open(player1_logical_ata_path);
 //	p2_logical.open(player2_logical_data_path);
 	results.open(results_data_path);
 	std::string testLine;
@@ -203,6 +205,16 @@ void Engine::dataAnalysis(int choice)
 	p2.close();
 	std::sort(player1moves.begin(), player1moves.end());
 	std::sort(player2moves.begin(), player2moves.end());
+	std::ofstream p1unique;
+	std::ofstream p2unique;
+	p1unique.open(player1_unique_moves);
+	p2unique.open(player2_unique_moves);
+	for (std::vector<std::string>::iterator it = player1moves.begin(); it != player1moves.end(); it++)
+		p1unique << *it << std::endl;
+	for (std::vector<std::string>::iterator it = player2moves.begin(); it != player2moves.end(); it++)
+		p2unique << *it << std::endl;
+	p1unique.close();
+	p2unique.close();
 	int numberOfGamesPlayed = choice;
 	std::cout << "-----------------------------------------------" << std::endl;
 	results << "-----------------------------------------------" << std::endl;
@@ -369,7 +381,6 @@ void Engine::rotateBarAnalyzeP2()
 	std::cout.flush();
 	return;
 }
-
 
 void Engine::createPetersenGraph(int choice, int edgeWeight, std::string watch)
 {
